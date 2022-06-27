@@ -39,7 +39,7 @@ logging.debug(f'CWD is {Path.cwd()}')
 
 # -- SCRIPT --
 
-shelf_file = shelve.open('data/temp/last_files')
+shelf_file = shelve.open('temp/last_files')
 files_path_Dict = shelf_file['files_path_Dict']
 shelf_file.close()
 
@@ -142,7 +142,7 @@ df_lugares_cines = df_lugares_cines.groupby(["provincia"], as_index=False)[
 df_processed_Dict["df_lugares_cines"] = df_lugares_cines
 
 ### Save df_processed_Dict
-shelf_file = shelve.open('data/temp/df_processed')
+shelf_file = shelve.open('temp/df_processed')
 shelf_file['df_processed_Dict'] = df_processed_Dict
 shelf_file.close()
 

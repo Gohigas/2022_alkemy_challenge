@@ -66,11 +66,13 @@ url_Dict = {
 # -- INIT CONFIG --
 os.chdir(sys.path[0])
 if not os.path.isdir(Path.cwd() / 'data'):
-    os.makedirs(Path.cwd() / 'data' / 'temp')
+    os.makedirs(Path.cwd() / 'data')
+if not os.path.isdir(Path.cwd() / 'temp'):
+    os.makedirs(Path.cwd() / 'temp')
 
 
 # -- SCRIPT --
-shelf_file = shelve.open('data/temp/last_files')
+shelf_file = shelve.open('temp/last_files')
 files_path_Dict = {}
 
 for k, v in url_Dict.items():
