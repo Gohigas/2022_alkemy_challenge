@@ -78,7 +78,7 @@ df_total = pd.concat(dframes)
 logging.debug(df_total.sample(n=3))
 logging.debug(df_total.shape)
 
-df_processed_Dict["df_total"] = df_total
+df_processed_Dict["tabla_total"] = df_total
 
 ### Task 02:
 original_columns_Dict2 ={
@@ -115,7 +115,7 @@ df_prov_categoria.drop(["provincia", "categoría"], axis = 1, inplace = True)
 
 df_registros = pd.concat([df_categoria, df_fuente, df_prov_categoria])
 
-df_processed_Dict["df_registros"] = df_registros
+df_processed_Dict["tabla_registros"] = df_registros
 
 ### Task 03:
 original_columns_Dict3 ={
@@ -139,7 +139,7 @@ df_lugares_cines = df_lugares_cines.groupby(["provincia"], as_index=False)[
     ["cantidad de pantallas", "cantidad de butacas", "cantidad de espacios INCAA"]
     ].sum()
 
-df_processed_Dict["df_lugares_cines"] = df_lugares_cines
+df_processed_Dict["tabla_lugares_cines"] = df_lugares_cines
 
 ### Save df_processed_Dict
 shelf_file = shelve.open('temp/df_processed')
