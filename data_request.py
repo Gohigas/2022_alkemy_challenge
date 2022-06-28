@@ -4,6 +4,7 @@ import requests
 import datetime
 import shelve
 from pathlib import Path
+import logging
 
 
 # -- FUNCTIONS --
@@ -52,6 +53,7 @@ def file_save(category, res):
             output_file.write(chunk)
     
     files_path_Dict[category] = file_path / "".join([file_name, ".csv"])
+    logging.debug(files_path_Dict[category])
     return
 
 
@@ -64,7 +66,13 @@ url_Dict = {
 
 
 # -- INIT CONFIG --
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s -  %(levelname)s -  %(message)s')
+logging.disable(logging.CRITICAL)
+
 os.chdir(sys.path[0])
+logging.debug(f"CWD is {Path.cwd()}")
+
 if not os.path.isdir(Path.cwd() / 'data'):
     os.makedirs(Path.cwd() / 'data')
 if not os.path.isdir(Path.cwd() / 'temp'):
@@ -72,11 +80,15 @@ if not os.path.isdir(Path.cwd() / 'temp'):
 
 
 # -- SCRIPT --
+
 shelf_file = shelve.open('temp/last_files')
 files_path_Dict = {}
 
 for k, v in url_Dict.items():
     url_request(k, v)
+    print(f'Archivo fuente de {k} descargada satisfactoriamente...')
 
 shelf_file['files_path_Dict'] = files_path_Dict
 shelf_file.close()
+
+print("Descarga de archivos fuente completada.")
