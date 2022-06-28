@@ -77,7 +77,7 @@ DB_NAME = -name_of_new_database-
 Ejecutar los scripts -.py-, dentro del directorio del proyecto y con el entorno virtual activado, con los siguiente comandos en orden:
 
 ```bash
-python data_requests
-python data_process
-python database_update
+python data_requests.py
+python data_process.py
+python database_update.py
 ```
