@@ -1,15 +1,22 @@
-import os
-import sys
-import shelve
-import pandas as pd
-from pathlib import Path
-import re
 import logging
+import os
+import re
+import shelve
+import sys
+from pathlib import Path
+
+import pandas as pd
 
 
 # -- FUNCTIONS --
-
 def columns_process(category, df, original_columns_Dict):
+    """
+    Columns processing for each of the dataframes.
+
+    Rename columns of dataframes to match expected output,
+    Delete not required columns from dataframes.
+    :input: Type of facility as string. Related Dataframe. Expected and existing column names as a dictionary.
+    """
     rename_Dict = {}
     for k, v in original_columns_Dict.items():
         if k in df.columns:
@@ -31,8 +38,9 @@ def columns_process(category, df, original_columns_Dict):
 
 
 # -- INIT CONFIG --
-
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s -  %(levelname)s -  %(message)s")
+logging.basicConfig(
+    level=logging.DEBUG, format="%(asctime)s -  %(levelname)s -  %(message)s"
+)
 logging.disable(logging.CRITICAL)
 
 os.chdir(sys.path[0])
@@ -40,7 +48,6 @@ logging.debug(f"CWD is {Path.cwd()}")
 
 
 # -- SCRIPT --
-
 shelf_file = shelve.open("temp/last_files")
 files_path_Dict = shelf_file["files_path_Dict"]
 shelf_file.close()

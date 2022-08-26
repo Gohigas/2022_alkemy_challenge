@@ -1,19 +1,18 @@
-from genericpath import exists
-from operator import index
-import os
-import sys
-import shelve
 import logging
+import os
+import shelve
+import sys
+from operator import index
 from pathlib import Path
-from decouple import config
-from sqlalchemy import create_engine
+
 import psycopg2
+from decouple import config
+from genericpath import exists
 from psycopg2 import sql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-
+from sqlalchemy import create_engine
 
 # -- INIT CONFIG --
-
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s -  %(levelname)s -  %(message)s"
 )
@@ -24,7 +23,6 @@ logging.debug(f"CWD is {Path.cwd()}")
 
 
 # -- SCRIPT --
-
 db_user = config("DB_USER")
 db_password = config("DB_PASS")
 db_host = config("DB_HOST")
@@ -36,7 +34,7 @@ con = psycopg2.connect(
 )
 con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 cur = con.cursor()
-cur.execute(f"SELECT 1 FROM pg_catalog.pg_database WHERE datname = \'{db_name}\'")
+cur.execute(f"SELECT 1 FROM pg_catalog.pg_database WHERE datname = '{db_name}'")
 exists = cur.fetchone()
 if not exists:
     cur.execute(f"CREATE DATABASE {db_name}")
