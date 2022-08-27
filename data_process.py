@@ -11,11 +11,14 @@ import pandas as pd
 # -- FUNCTIONS --
 def columns_process(category, df, original_columns_Dict):
     """
-    Columns processing for each of the dataframes.
+    Process columns for each of the dataframes.
 
     Rename columns of dataframes to match expected output,
     Delete not required columns from dataframes.
-    :input: Type of facility as string. Related Dataframe. Expected and existing column names as a dictionary.
+    :input: Type of facility as string,
+    :input: Related Dataframe,
+    :input: Expected and existing column names as a dictionary.
+    :output: Processed Dataframe.
     """
     rename_Dict = {}
     for k, v in original_columns_Dict.items():
