@@ -22,10 +22,10 @@ Dirigirse al directorio en el cual se desea instalar el entorno virtual (general
 *-"C:\path\to\directory"- : ruta al directorio deseado*
 
 ```bash
-cd -"C:\path\to\directory"-
+cd -"C:/path/to/directory"-
 ```
 
-Dentro del directorio sonde se desea crear el entorno virtual, ejecutar el siguiente comando: <br>
+Dentro del directorio donde se desea crear el entorno virtual, ejecutar el siguiente comando: <br>
 *-venv_name- : nombre del entorno virtual*
 
 ```bash
@@ -37,7 +37,7 @@ virtualenv -venv_name-
 Activar el entorno virtual con el siguiente comando dentro del directorio en el que se ubica el entorno virtual:
 
 ```bash
-.\venv_name\Scripts\activate.bat
+./venv_name/Scripts/activate.bat
 ```
 
 Instalar las dependencias requeridas para el deploy del proyecto utilizando pip:
@@ -58,7 +58,7 @@ pip freeze
 
 ### Configuración de la conexión a la base de datos
 
-Para configurar las variables necesarias para la conexión a la base de datos se debe crear un archivo de texto ubicado en el directorio del proyecto llamado 'settings.ini'. Editar el archivo creado con un editor de texto incluyendo el siguiente contenido:<br>
+Para configurar las variables necesarias para la conexión a la base de datos se debe crear un archivo de texto ubicado en el directorio del proyecto, en la carpeta 'source' llamado 'settings.ini'. Editar el archivo creado con un editor de texto incluyendo el siguiente contenido:<br>
 *-your_db_user- : nombre de usuario del servidor (generalmente 'postgres')* <br>
 *-your_db_pass- : contraseña del servidor* <br>
 *-your_db_host- : nombre de usuario del servidor (generalmente 'localhost')* <br>
@@ -77,7 +77,7 @@ DB_NAME = -name_of_new_database-
 Ejecutar los scripts -.py-, dentro del directorio del proyecto y con el entorno virtual activado, con los siguiente comandos en orden:
 
 ```bash
-python data_requests.py
-python data_process.py
-python database_update.py
+python source/data_requests.py
+python source/data_process.py
+python source/database_update.py
 ```
